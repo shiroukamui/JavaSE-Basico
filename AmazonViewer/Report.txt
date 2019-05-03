@@ -1,0 +1,73 @@
+:: ALREADY SEEN ::
+[
+::MAGAZINE::
+Title: Magazine 1
+Publisher: Editorial 1
+Authors: Author 1 
+First Publication Date: 02/05/2019
+Last Publication Date: 02/05/2019
+Release Frequency: Release Frecuency 1, 
+::MAGAZINE::
+Title: Magazine 2
+Publisher: Editorial 2
+Authors: Author 2 
+First Publication Date: 02/05/2019
+Last Publication Date: 02/05/2019
+Release Frequency: Release Frecuency 2, 
+::MAGAZINE::
+Title: Magazine 3
+Publisher: Editorial 3
+Authors: Author 3 
+First Publication Date: 02/05/2019
+Last Publication Date: 02/05/2019
+Release Frequency: Release Frecuency 3, 
+::MAGAZINE::
+Title: Magazine 4
+Publisher: Editorial 4
+Authors: Author 4 
+First Publication Date: 02/05/2019
+Last Publication Date: 02/05/2019
+Release Frequency: Release Frecuency 4, 
+::MAGAZINE::
+Title: Magazine 5
+Publisher: Editorial 5
+Authors: Author 5 
+First Publication Date: 02/05/2019
+Last Publication Date: 02/05/2019
+Release Frequency: Release Frecuency 5]
+[
+::MAGAZINE::
+Title: Magazine 1
+Publisher: Editorial 1
+Authors: Author 1 
+First Publication Date: 02/05/2019
+Last Publication Date: 02/05/2019
+Release Frequency: Release Frecuency 1, 
+::MAGAZINE::
+Title: Magazine 2
+Publisher: Editorial 2
+Authors: Author 2 
+First Publication Date: 02/05/2019
+Last Publication Date: 02/05/2019
+Release Frequency: Release Frecuency 2, 
+::MAGAZINE::
+Title: Magazine 3
+Publisher: Editorial 3
+Authors: Author 3 
+First Publication Date: 02/05/2019
+Last Publication Date: 02/05/2019
+Release Frequency: Release Frecuency 3, 
+::MAGAZINE::
+Title: Magazine 4
+Publisher: Editorial 4
+Authors: Author 4 
+First Publication Date: 02/05/2019
+Last Publication Date: 02/05/2019
+Release Frequency: Release Frecuency 4, 
+::MAGAZINE::
+Title: Magazine 5
+Publisher: Editorial 5
+Authors: Author 5 
+First Publication Date: 02/05/2019
+Last Publication Date: 02/05/2019
+Release Frequency: Release Frecuency 5]
