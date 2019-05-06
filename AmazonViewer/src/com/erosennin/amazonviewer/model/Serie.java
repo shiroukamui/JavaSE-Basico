@@ -69,5 +69,15 @@ public class Serie extends Film implements Visualizable{
         }
     }
 
-
+    @Override
+    public void view() {
+        setViewed(true);
+        List<Chapter> chapters = getChapters();
+        for (Chapter chapter : chapters) {
+            if (chapter.getViewed().equals("No")) {
+                setViewed(false);
+                break;
+            }
+        }
+    }
 }

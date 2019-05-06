@@ -1,6 +1,7 @@
 package com.erosennin.amazonviewer.utils;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Utils {
 
@@ -29,5 +30,13 @@ public class Utils {
             option = "";
         }
         return option;
+    }
+
+    public static void timeDelay(int seconds) {
+        try {
+            TimeUnit.SECONDS.sleep(seconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

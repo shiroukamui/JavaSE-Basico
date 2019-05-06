@@ -6,10 +6,3 @@ Year: 2015
 Creator: Director 1
 Duration: 121
 Seconds viewed: 2
-
-Title: Movie 5
-Genre: Genre 5
-Year: 2019
-Creator: Director 5
-Duration: 125
-Seconds viewed: 2

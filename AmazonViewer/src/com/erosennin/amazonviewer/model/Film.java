@@ -2,7 +2,7 @@ package com.erosennin.amazonviewer.model;
 
 import java.util.Date;
 
-public class Film {
+public abstract class Film {
 
     private int duration;
     private int timeViewed;
@@ -52,7 +52,7 @@ public class Film {
         this.year = year;
     }
 
-    public String isViewed() {
+    public String getViewed() {
         return (viewed) ? "Yes" : "No";
     }
 
@@ -67,4 +67,6 @@ public class Film {
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
+
+    public abstract void view();
 }

@@ -1,8 +1,11 @@
 package com.erosennin.amazonviewer.model;
 
+import com.erosennin.amazonviewer.utils.Utils;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Movie extends Film implements Visualizable{
 
@@ -50,4 +53,15 @@ public class Movie extends Film implements Visualizable{
         }
     }
 
+    @Override
+    public void view() {
+        setViewed(true);
+        startToSee(new Date());
+        for (int i = 0; i < 100; i++) {
+            System.out.println("...You are seeing the " + getTitle() + "...");
+        }
+        Utils.timeDelay(2);
+        stopToSee(new Date());
+        System.out.println("\n::YOU JUST SAW::" + toString());
+    }
 }
