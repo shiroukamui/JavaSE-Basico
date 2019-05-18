@@ -25,7 +25,7 @@ public class Utils {
         if (Utils.isNotNumber(option)) {
             System.out.println("\nThat option doesn't exist, please choose another.\n");
             option = "";
-        } else if (Integer.parseInt(option) < 0 || size+2 < Integer.parseInt(option)) {
+        } else if (Integer.parseInt(option) < 0 || size < Integer.parseInt(option)) {
             System.out.println("\nThat option doesn't exist, please choose another.\n");
             option = "";
         }

@@ -20,6 +20,10 @@ public class Magazine extends Publication implements Visualizable{
         this.lastRelease = lastRelease;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

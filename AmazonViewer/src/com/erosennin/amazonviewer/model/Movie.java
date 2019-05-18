@@ -5,8 +5,18 @@ import com.erosennin.amazonviewer.utils.Utils;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
+/**
+ * <h1>Movie</h1>
+ * Hereda de la clase {@link Film} e implementa la interface {@link Visualizable} permitiendo organizar objetos de tipo Movie en
+ * el visor de contenido AmazonViewer.
+ * <br>
+ * Sobreescribe el metodo {@code String()} e implementa {@code startToSee()}, {@code stopToSee()} y {@code view()}
+ *
+ * @author erosennin
+ * @version 1.1
+ * @since 2019
+ */
 public class Movie extends Film implements Visualizable{
 
     private int id;
@@ -29,6 +39,11 @@ public class Movie extends Film implements Visualizable{
         return movies;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @return String. Detalle de la informacion de la Pelicula, como titulo, genero, duracion, etc.
+     */
     @Override
     public String toString() {
         return "\nTitle: " + this.getTitle() +
@@ -39,11 +54,19 @@ public class Movie extends Film implements Visualizable{
                 "\nSeconds viewed: " + this.getTimeViewed();
     }
 
+    /**
+     * {@inheritDoc}
+     * @param startDate {@code Date} Fecha en la que se inicia la visualización.
+     */
     @Override
     public void startToSee(Date startDate) {
         setStartDate(startDate);
     }
 
+    /**
+     * {@inheritDoc}
+     * @param endDate {@code Date} Fecha en la que se finaliza la visualización.
+     */
     @Override
     public void stopToSee(Date endDate) {
         if (getStartDate().getTime() < endDate.getTime()) {
@@ -53,6 +76,9 @@ public class Movie extends Film implements Visualizable{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void view() {
         setViewed(true);

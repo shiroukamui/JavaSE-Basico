@@ -2,6 +2,18 @@ package com.erosennin.amazonviewer.model;
 
 import java.util.Date;
 
+/**
+ * <h1>Film</h1>
+ * Film es una clase padre abstracta.
+ * <br>
+ * Es la clase base de la familia Films, como es abstracta no se puede instanciar y por ende contiene el método
+ * abstracto {@code view()} que es de implementación obligatoria para todos los herederos de esta clase.
+ *
+ * @author erosennin
+ * @version 1.1
+ * @since 2019
+ */
+
 public abstract class Film {
 
     private int duration;
@@ -68,5 +80,8 @@ public abstract class Film {
         this.startDate = startDate;
     }
 
+    /**
+     * {@code view()} es un método abstracto de implementación obligatoria.
+     */
     public abstract void view();
 }

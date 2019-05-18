@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.erosennin.amazonviewer"},{"l":"com.erosennin.amazonviewer.challenges"},{"l":"com.erosennin.amazonviewer.model"},{"l":"com.erosennin.amazonviewer.utils"}]

@@ -3,6 +3,11 @@ package com.erosennin.amazonviewer.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Hereda de {@code Movie}
+ *
+ * @see Film
+ */
 public class Chapter extends Movie {
 
     private int id;

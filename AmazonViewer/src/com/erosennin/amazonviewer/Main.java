@@ -10,6 +10,19 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+
+/**
+ * <h1>AmazonViewer</h1>
+ * AmazonViewer es un programa que permite visualizar Movies, Series con sus respectivos Chapters, Books y Magazines.
+ * Te permite generar reportes generales y con la fecha del día.
+ * <br>
+ * Existen algunas reglas como que todos los elementos pueden ser visualizados o leídos con excepción de los Magazines,
+ * estas solo pueden ser vistas a modo de exposición sin ser leídas.
+ *
+ * @author erosennin
+ * @version 1.1
+ * @since 2019
+ */
 public class Main {
 
     static List<Movie> movies = Movie.makeMoviesList();
@@ -71,7 +84,7 @@ public class Main {
             System.out.println(index + 1 + ". Report With Date");
             System.out.println("0. Return to Main Menu");
 
-            option = Utils.validateUserResponseMenu(movies.size());
+            option = Utils.validateUserResponseMenu(movies.size() + 2);
             if (option.equals(String.valueOf(index))) {
                 StringBuilder content = new StringBuilder();
                 for (Movie movie : movies) {
@@ -108,7 +121,7 @@ public class Main {
             System.out.println(index + 1 + ". Report With Date");
             System.out.println("0. Return to Main Menu");
 
-            option = Utils.validateUserResponseMenu(series.size());
+            option = Utils.validateUserResponseMenu(series.size() + 2);
             if (option.equals(String.valueOf(index))) {
                 StringBuilder content = new StringBuilder();
                 for (Serie serie : series) {
@@ -147,7 +160,7 @@ public class Main {
             System.out.println(index + 1 + ". Report With Date");
             System.out.println("0. Return to Main Menu");
 
-            option = Utils.validateUserResponseMenu(chapters.size());
+            option = Utils.validateUserResponseMenu(chapters.size() + 2);
             if (option.equals(String.valueOf(index))) {
                 StringBuilder content = new StringBuilder();
                 for (Chapter chapter : chapters) {
@@ -184,7 +197,7 @@ public class Main {
             System.out.println(index + 1 + ". Report With Date");
             System.out.println("0. Return to Main Menu");
 
-            option = Utils.validateUserResponseMenu(books.size());
+            option = Utils.validateUserResponseMenu(books.size() + 2);
             if (option.equals(String.valueOf(index))) {
                 StringBuilder content = new StringBuilder();
                 for (Book book : books) {
@@ -222,7 +235,7 @@ public class Main {
             System.out.println(index + 1 + ". Report With Date");
             System.out.println("0. Return to Main Menu");
 
-            option = Utils.validateUserResponseMenu(magazines.size());
+            option = Utils.validateUserResponseMenu(magazines.size() + 2);
             if (option.equals(String.valueOf(index))) {
                 StringBuilder content = new StringBuilder();
                 for (Magazine magazine : magazines) {

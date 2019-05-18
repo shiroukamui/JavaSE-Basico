@@ -6,20 +6,33 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Book extends Publication implements Visualizable {
 
     private int id;
     private String isbn;
-    private int pages;
+    private ArrayList<Page> pages;
     private Date startDate;
 
-    public Book(String title, String editorial, String[] authors, Date publicationDate, String isbn, boolean readed, int pages) {
+    public Book(String title, String editorial, String[] authors, Date publicationDate, String isbn, boolean readed,
+                ArrayList<Page> pages) {
         super(title, editorial, authors, publicationDate);
         super.setReaded(readed);
         this.isbn = isbn;
         this.pages = pages;
+    }
+
+    public static List<Book> makeBooksList() {
+        List<Book> books = new ArrayList<>();
+        String[] authors = new String[3];
+        for (int i = 1; i < authors.length; i++) {
+            authors[i] = "Author " + i;
+        }
+        for (int i = 1; i < 6; i++) {
+            books.add(new Book("Book " + i, "Editorial " + i, authors, new Date(), "ISBN " + i,
+                    false, Page.makePagesForBook()));
+        }
+        return books;
     }
 
     public int getId() {
@@ -30,28 +43,62 @@ public class Book extends Publication implements Visualizable {
         return isbn;
     }
 
-    public int getPages() {
-        return pages;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public static List<Book> makeBooksList() {
-        List<Book> books = new ArrayList<>();
-        for (int i = 1; i < 6; i++) {
-            books.add(new Book("Book " + i, "Editorial " + i, new String[]{"Author " + i}, new Date(),
-                    "ISBN " + i, false, 200 + i));
+    public int getLastPageReaded() {
+        int lastPageReaded = 0;
+        for (int i = 0; i < pages.size(); i++) {
+            if (pages.get(i).isReaded().equals("No")) {
+                lastPageReaded = pages.get(i).getNumber() - 1;
+                if (i != 0) {
+                    lastPageReaded--;
+                }
+                break;
+            } else if (i == pages.size() - 1) {
+                lastPageReaded = pages.size() - 1;
+            }
         }
-        return books;
+        return lastPageReaded;
     }
 
     public void view() {
-        setReaded(true);
         startToSee(new Date());
-        for (int i = 0; i < 100; i++) {
-            System.out.println("...You are reading the " + getTitle() + "...");
-        }
-        Utils.timeDelay(2);
+        int lastPageReaded = getLastPageReaded();
+        System.out.println(lastPageReaded);
+        do {
+            System.out.println("\n :: " + getTitle() + " :: ");
+            System.out.println("\n...Page " + pages.get(lastPageReaded).getNumber() + "...");
+            System.out.println(".........");
+            System.out.println(pages.get(lastPageReaded).getContent());
+            System.out.println(".........\n");
+            pages.get(lastPageReaded).setReaded(true);
+            if (lastPageReaded != 0) {
+                System.out.println("1. Previous Page");
+            }
+            System.out.println("2. Next Page");
+            System.out.println("0. Close Book");
+            String option = Utils.validateUserResponseMenu(2);
+            switch (option) {
+                case "2":
+                    lastPageReaded++;
+                    break;
+                case "1":
+                    if (lastPageReaded != 0) {
+                        lastPageReaded--;
+                    } else {
+                        System.out.println("\nThat option doesn't exist, please choose another.\n");
+                    }
+                    break;
+                case "0":
+                    lastPageReaded = pages.size();
+                    break;
+            }
+        } while (lastPageReaded < pages.size());
         stopToSee(new Date());
-        System.out.println("\n::YOU JUST SAW::" + toString());
+        System.out.println("\n::YOU JUST SAW::\n" + toString());
+        setReaded(true);
     }
 
     @Override
@@ -69,7 +116,7 @@ public class Book extends Publication implements Visualizable {
                 "\nPublication Date: " + new SimpleDateFormat("dd/MM/yyyy").format(getPublicationDate()) +
                 "\nISBN: " + getIsbn() +
                 "\nReaded: " + isReaded() +
-                "\nPages: " + getPages();
+                "\nPages: " + pages.size();
     }
 
     @Override
@@ -83,6 +130,63 @@ public class Book extends Publication implements Visualizable {
             setTimeReaded((int) (endDate.getTime() - startDate.getTime()));
         } else {
             setTimeReaded(0);
+        }
+    }
+
+    @Override
+    public void setReaded(boolean readed) {
+        super.setReaded(readed);
+        for (Page page : pages) {
+            if (page.isReaded().equals("No")) {
+                super.setReaded(false);
+                break;
+            }
+        }
+    }
+
+
+    public static class Page {
+
+        private int id;
+        private int number;
+        private String content;
+        private boolean readed;
+
+        public Page(int number, String content) {
+            this.number = number;
+            this.content = content;
+        }
+
+        public static ArrayList<Page> makePagesForBook() {
+            ArrayList<Page> pages = new ArrayList<>();
+            for (int i = 1; i < 7; i++) {
+                pages.add(new Page(i, "Content...\nContent...\nContent...\nContent..."));
+            }
+            return pages;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getNumber() {
+            return number;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public String isReaded() {
+            return (readed) ? "Yes" : "No";
+        }
+
+        public void setReaded(boolean readed) {
+            this.readed = readed;
         }
     }
 }
