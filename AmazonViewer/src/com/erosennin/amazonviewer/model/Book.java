@@ -14,8 +14,8 @@ public class Book extends Publication implements Visualizable {
     private ArrayList<Page> pages;
     private Date startDate;
 
-    public Book(String title, String editorial, String[] authors, Date publicationDate, String isbn, boolean readed,
-                ArrayList<Page> pages) {
+    public Book(String title, String editorial, String[] authors, Date publicationDate, String isbn,
+                boolean readed, ArrayList<Page> pages) {
         super(title, editorial, authors, publicationDate);
         super.setReaded(readed);
         this.isbn = isbn;
