@@ -11,20 +11,17 @@ public class GuitarJDBC {
     static final String query = "select Id, Name from guitar where IsPremium = (select IsPremium from client where Id=?)";
 
     public static void executeQuery(String IdUser) {
-        try {
+        try (Connection connection = DriverManager.getConnection(url, user, pass);
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
             Class.forName(driver);
-            Connection connection = DriverManager.getConnection(url, user, pass);
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, IdUser);
-            ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("Id");
                 String name = resultSet.getString("Name");
                 System.out.println("ID: " + id + " NAME: " + name);
             }
-            resultSet.close();
-            preparedStatement.close();
-            connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
