@@ -1,8 +1,8 @@
 package com.erosennin.amazonviewer.model;
 
+import com.erosennin.amazonviewer.dao.MovieDAO;
 import com.erosennin.amazonviewer.utils.Utils;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,14 +17,18 @@ import java.util.List;
  * @version 1.1
  * @since 2019
  */
-public class Movie extends Film implements Visualizable{
+public class Movie extends Film implements Visualizable, MovieDAO {
 
     private int id;
+    private String dateString;
 
+    public Movie() {
+    }
 
-    public Movie(int duration, String title, String genre, String creator, short year) {
+    public Movie(int id, int duration, String title, String genre, String creator, short year) {
         super(duration, title, genre, creator);
         this.setYear(year);
+        this.id = id;
     }
 
     public int getId() {
@@ -32,11 +36,16 @@ public class Movie extends Film implements Visualizable{
     }
 
     public static List<Movie> makeMoviesList() {
-        List<Movie> movies = new ArrayList<>();
-        for (int i = 1; i < 6; i++) {
-            movies.add(new Movie(120+i, "Movie "+i,"Genre "+i,"Director "+i, (short) (2014+i)));
-        }
-        return movies;
+        Movie movie = new Movie();
+        return movie.read();
+    }
+
+    public String getDateString() {
+        return dateString;
+    }
+
+    public void setDateString(String dateString) {
+        this.dateString = dateString;
     }
 
     /**
@@ -51,7 +60,8 @@ public class Movie extends Film implements Visualizable{
                 "\nYear: " + this.getYear() +
                 "\nCreator: " + this.getCreator() +
                 "\nDuration: " + this.getDuration() +
-                "\nSeconds viewed: " + this.getTimeViewed();
+                "\nSeconds viewed: " + this.getTimeViewed() +
+                "\nDate: " + this.getDateString();
     }
 
     /**
@@ -83,6 +93,8 @@ public class Movie extends Film implements Visualizable{
     public void view() {
         setViewed(true);
         startToSee(new Date());
+        Movie movie = new Movie();
+        movie.setMovieViewed(this);
         for (int i = 0; i < 100; i++) {
             System.out.println("...You are seeing the " + getTitle() + "...");
         }

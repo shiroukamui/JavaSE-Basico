@@ -1,8 +1,0 @@
-:: ALREADY SEEN ::
-
-Title: Movie 1
-Genre: Genre 1
-Year: 2015
-Creator: Director 1
-Duration: 121
-Seconds viewed: 2

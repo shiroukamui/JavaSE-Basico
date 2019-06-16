@@ -1,6 +1,5 @@
 package com.erosennin.amazonviewer;
 
-import com.erosennin.amazonviewer.challenges.GuitarJDBC;
 import com.erosennin.amazonviewer.model.*;
 import com.erosennin.amazonviewer.utils.Utils;
 import com.erosennin.reports.Report;
@@ -32,8 +31,7 @@ public class Main {
     static List<Magazine> magazines = Magazine.makeMagazinesList();
 
     public static void main(String[] args) {
-//        showMenu();
-        GuitarJDBC.executeQuery("44");
+        showMenu();
     }
 
     private static void showMenu() {

@@ -25,6 +25,9 @@ public abstract class Film {
     private boolean viewed;
     private Date startDate;
 
+    public Film() {
+    }
+
     public Film(int duration, String title, String genre, String creator) {
         this.duration = duration;
         this.title = title;

@@ -13,8 +13,8 @@ public class Chapter extends Movie {
     private int id;
     private int seasonNumber;
 
-    public Chapter(int duration, String title, String genre, String creator, short year, int seasonNumber) {
-        super(duration, title, genre, creator, year);
+    public Chapter(int id, int duration, String title, String genre, String creator, short year, int seasonNumber) {
+        super(id, duration, title, genre, creator, year);
         this.seasonNumber = seasonNumber;
     }
 
@@ -29,7 +29,7 @@ public class Chapter extends Movie {
     public static List<Chapter> makeChaptersList() {
         List<Chapter> chapters = new ArrayList<>();
         for (int i = 1; i < 6; i++) {
-            chapters.add(new Chapter(45,"Chapter "+i,"Genre "+i,"Author "+i, (short) (2014+1),i));
+            chapters.add(new Chapter(i, 45, "Chapter " + i, "Genre " + i, "Author " + i, (short) (2014 + 1), i));
         }
         return chapters;
     }
