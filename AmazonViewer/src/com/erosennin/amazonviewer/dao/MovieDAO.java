@@ -28,7 +28,6 @@ public interface MovieDAO extends IDBConnection {
                 String movieViewed = getMovieViewed(connection, resultSet.getInt(TMOVIE_ID));
                 movie.setViewed(!movieViewed.equals(""));
                 movie.setDateString(movieViewed);
-                System.out.println(movie);
                 movies.add(movie);
             }
         } catch (SQLException e) {
