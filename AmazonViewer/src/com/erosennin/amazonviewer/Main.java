@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Consumer;
 
 
 /**
@@ -44,6 +46,8 @@ public class Main {
             System.out.println("2. Series");
             System.out.println("3. Books");
             System.out.println("4. Magazines");
+            System.out.println("5. Report");
+            System.out.println("6. Report With Date");
             System.out.println("0. Exit");
 
             option = scanner.next();
@@ -60,6 +64,12 @@ public class Main {
                 case "4":
                     showMagazines();
                     break;
+                case "5":
+                    makeReport();
+                    break;
+                case "6":
+                    makeReport(new Date());
+                    break;
                 case "0":
                     System.out.println("\nThe execution has been finished.\n");
                     break;
@@ -74,33 +84,12 @@ public class Main {
         String option;
         do {
             System.out.println("\n:: MOVIES ::\n");
-            int index = 1;
-            for (int i = 0; i < movies.size(); i++) {
-                System.out.println(i + 1 + ". " + movies.get(i).getTitle() + " Seen: " + movies.get(i).getViewed());
-                index++;
-            }
-            System.out.println(index + ". Report");
-            System.out.println(index + 1 + ". Report With Date");
+            AtomicInteger index = new AtomicInteger(1);
+            movies.forEach(movie -> System.out.println(
+                    index.getAndIncrement() + ". " + movie.getTitle() + " Seen: " + movie.getViewed()));
             System.out.println("0. Return to Main Menu");
-
-            option = Utils.validateUserResponseMenu(movies.size() + 2);
-            if (option.equals(String.valueOf(index))) {
-                StringBuilder content = new StringBuilder();
-                for (Movie movie : movies) {
-                    if (movie.getViewed().equals("Yes")) {
-                        content.append(movie.toString()).append("\n");
-                    }
-                }
-                makeReport(content.toString());
-            } else if (option.equals(String.valueOf(index + 1))) {
-                StringBuilder content = new StringBuilder();
-                for (Movie movie : movies) {
-                    if (movie.getViewed().equals("Yes")) {
-                        content.append(movie.toString()).append("\n");
-                    }
-                }
-                makeReport(content.toString(), new Date());
-            } else if (!option.equals("0") && !option.equals("")) {
+            option = Utils.validateUserResponseMenu(movies.size());
+            if (!option.equals("0") && !option.equals("")) {
                 Movie movieSelected = movies.get(Integer.parseInt(option) - 1);
                 movieSelected.view();
             }
@@ -111,33 +100,12 @@ public class Main {
         String option;
         do {
             System.out.println("\n:: SERIES ::\n");
-            int index = 1;
-            for (int i = 0; i < series.size(); i++) {
-                System.out.println(i + 1 + ". " + series.get(i).getTitle() + " Seen: " + series.get(i).getViewed());
-                index++;
-            }
-            System.out.println(index + ". Report");
-            System.out.println(index + 1 + ". Report With Date");
+            AtomicInteger index = new AtomicInteger(1);
+            series.forEach(serie -> System.out.println(
+                    index.getAndIncrement() + ". " + serie.getTitle() + " Seen: " + serie.getViewed()));
             System.out.println("0. Return to Main Menu");
-
-            option = Utils.validateUserResponseMenu(series.size() + 2);
-            if (option.equals(String.valueOf(index))) {
-                StringBuilder content = new StringBuilder();
-                for (Serie serie : series) {
-                    if (serie.getViewed().equals("Yes")) {
-                        content.append(serie.toString()).append("\n");
-                    }
-                }
-                makeReport(content.toString());
-            } else if (option.equals(String.valueOf(index + 1))) {
-                StringBuilder content = new StringBuilder();
-                for (Serie serie : series) {
-                    if (serie.getViewed().equals("Yes")) {
-                        content.append(serie.toString()).append("\n");
-                    }
-                }
-                makeReport(content.toString(), new Date());
-            } else if (!option.equals("0") && !option.equals("")) {
+            option = Utils.validateUserResponseMenu(series.size());
+            if (!option.equals("0") && !option.equals("")) {
                 System.out.println("\n:: SERIE " + option + " ::\n");
                 Serie serie = series.get(Integer.parseInt(option) - 1);
                 showChapters(serie.getChapters());
@@ -150,33 +118,12 @@ public class Main {
         String option;
         do {
             System.out.println("\n:: CHAPTERS ::\n");
-            int index = 1;
-            for (int i = 0; i < chapters.size(); i++) {
-                System.out.println(i + 1 + ". " + chapters.get(i).getTitle() + " Seen: " + chapters.get(i).getViewed());
-                index++;
-            }
-            System.out.println(index + ". Report");
-            System.out.println(index + 1 + ". Report With Date");
+            AtomicInteger index = new AtomicInteger(1);
+            chapters.forEach(chapter -> System.out.println(
+                    index.getAndIncrement() + ". " + chapter.getTitle() + " Seen: " + chapter.getViewed()));
             System.out.println("0. Return to Main Menu");
-
-            option = Utils.validateUserResponseMenu(chapters.size() + 2);
-            if (option.equals(String.valueOf(index))) {
-                StringBuilder content = new StringBuilder();
-                for (Chapter chapter : chapters) {
-                    if (chapter.getViewed().equals("Yes")) {
-                        content.append(chapter.toString()).append("\n");
-                    }
-                }
-                makeReport(content.toString());
-            } else if (option.equals(String.valueOf(index + 1))) {
-                StringBuilder content = new StringBuilder();
-                for (Chapter chapter : chapters) {
-                    if (chapter.getViewed().equals("Yes")) {
-                        content.append(chapter.toString()).append("\n");
-                    }
-                }
-                makeReport(content.toString(), new Date());
-            } else if (!option.equals("0") && !option.equals("")) {
+            option = Utils.validateUserResponseMenu(chapters.size());
+            if (!option.equals("0") && !option.equals("")) {
                 Chapter chapterSelected = chapters.get(Integer.parseInt(option) - 1);
                 chapterSelected.view();
             }
@@ -187,33 +134,12 @@ public class Main {
         String option;
         do {
             System.out.println("\n:: BOOKS ::\n");
-            int index = 1;
-            for (int i = 0; i < books.size(); i++) {
-                System.out.println(i + 1 + ". " + books.get(i).getTitle() + " Read: " + books.get(i).isReaded());
-                index++;
-            }
-            System.out.println(index + ". Report");
-            System.out.println(index + 1 + ". Report With Date");
+            AtomicInteger index = new AtomicInteger(1);
+            books.forEach(book -> System.out.println(
+                    index.getAndIncrement() + ". " + book.getTitle() + " Read: " + book.isReaded()));
             System.out.println("0. Return to Main Menu");
-
-            option = Utils.validateUserResponseMenu(books.size() + 2);
-            if (option.equals(String.valueOf(index))) {
-                StringBuilder content = new StringBuilder();
-                for (Book book : books) {
-                    if (book.isReaded().equals("Yes")) {
-                        content.append(book.toString()).append("\n");
-                    }
-                }
-                makeReport(content.toString());
-            } else if (option.equals(String.valueOf(index + 1))) {
-                StringBuilder content = new StringBuilder();
-                for (Book book : books) {
-                    if (book.isReaded().equals("Yes")) {
-                        content.append(book.toString()).append("\n");
-                    }
-                }
-                makeReport(content.toString(), new Date());
-            } else if (!option.equals("0") && !option.equals("")) {
+            option = Utils.validateUserResponseMenu(books.size());
+            if (!option.equals("0") && !option.equals("")) {
                 Book bookSelected = books.get(Integer.parseInt(option) - 1);
                 bookSelected.view();
             }
@@ -224,34 +150,13 @@ public class Main {
         String option;
         do {
             System.out.println("\n:: MAGAZINES ::\n");
-            int index = 1;
-            for (int i = 0; i < magazines.size(); i++) {
-                System.out.println(i + 1 + ". " + magazines.get(i).getTitle() + " Last Release: " +
-                        new SimpleDateFormat("dd/MM/yyyy").format(magazines.get(i).getLastRelease()));
-                index++;
-            }
-            System.out.println(index + ". Report");
-            System.out.println(index + 1 + ". Report With Date");
+            AtomicInteger index = new AtomicInteger(1);
+            magazines.forEach(magazine -> System.out.println(
+                    index.getAndIncrement() + ". " + magazine.getTitle() + " Last Release: "
+                            + new SimpleDateFormat("dd/MM/yyyy").format(magazine.getLastRelease())));
             System.out.println("0. Return to Main Menu");
-
-            option = Utils.validateUserResponseMenu(magazines.size() + 2);
-            if (option.equals(String.valueOf(index))) {
-                StringBuilder content = new StringBuilder();
-                for (Magazine magazine : magazines) {
-                    if (magazine.isReaded().equals("Yes")) {
-                        content.append(magazines.toString()).append("\n");
-                    }
-                }
-                makeReport(content.toString());
-            } else if (option.equals(String.valueOf(index + 1))) {
-                StringBuilder content = new StringBuilder();
-                for (Magazine magazines : magazines) {
-                    if (magazines.isReaded().equals("Yes")) {
-                        content.append(magazines.toString()).append("\n");
-                    }
-                }
-                makeReport(content.toString(), new Date());
-            } else if (!option.equals("0") && !option.equals("")) {
+            option = Utils.validateUserResponseMenu(magazines.size());
+            if (!option.equals("0") && !option.equals("")) {
                 Magazine magazineSelected = magazines.get(Integer.parseInt(option) - 1);
                 magazineSelected.setReaded(true);
                 magazineSelected.startToSee(new Date());
@@ -264,10 +169,30 @@ public class Main {
         } while (!option.equals("0"));
     }
 
-    private static void makeReport(String content) {
+    private static void makeReport() {
         System.out.println("\n:: CREATING REPORT WITHOUT DATE ::\n");
         Report report = new Report("Report.txt", ":: ALREADY SEEN ::\n");
-        report.setContent(content);
+        StringBuilder content = new StringBuilder();
+        movies.stream()
+                .filter(movie -> movie.getViewed().equals("Yes"))
+                .forEach(movie -> content.append(movie.toString()).append("\n"));
+        series.stream()
+                .filter(serie -> serie.getViewed().equals("Yes"))
+                .forEach(serie -> content.append(serie.toString()).append("\n"));
+        Consumer<Serie> chaptersViewed = serie -> {
+            List<Chapter> chapters = serie.getChapters();
+            chapters.stream()
+                    .filter(chapter -> chapter.getViewed().equals("Yes"))
+                    .forEach(chapter -> content.append(chapter.toString()).append("\n"));
+        };
+        series.stream().forEach(chaptersViewed);
+        books.stream()
+                .filter(book -> book.isReaded().equals("Yes"))
+                .forEach(book -> content.append(book.toString()).append("\n"));
+        magazines.stream()
+                .filter(magazine -> magazine.isReaded().equals("Yes"))
+                .forEach(magazine -> content.append(magazine.toString()).append("\n"));
+        report.setContent(content.toString());
         try {
             report.makeReport();
         } catch (IOException e) {
@@ -275,12 +200,32 @@ public class Main {
         }
     }
 
-    private static void makeReport(String content, Date date) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy");
+    private static void makeReport(Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy-H-m-s");
         String dateFormat = simpleDateFormat.format(date);
         System.out.println("\n:: REPORT DATED " + date + " ::\n");
         Report report = new Report("Report-" + dateFormat + ".txt", ":: ALREADY SEEN ::\n");
-        report.setContent(content);
+        StringBuilder content = new StringBuilder();
+        movies.stream()
+                .filter(movie -> movie.getViewed().equals("Yes"))
+                .forEach(movie -> content.append(movie.toString()).append("\n"));
+        series.stream()
+                .filter(serie -> serie.getViewed().equals("Yes"))
+                .forEach(serie -> content.append(serie.toString()).append("\n"));
+        Consumer<Serie> chaptersViewed = serie -> {
+            List<Chapter> chapters = serie.getChapters();
+            chapters.stream()
+                    .filter(chapter -> chapter.getViewed().equals("Yes"))
+                    .forEach(chapter -> content.append(chapter.toString()).append("\n"));
+        };
+        series.stream().forEach(chaptersViewed);
+        books.stream()
+                .filter(book -> book.isReaded().equals("Yes"))
+                .forEach(book -> content.append(book.toString()).append("\n"));
+        magazines.stream()
+                .filter(magazine -> magazine.isReaded().equals("Yes"))
+                .forEach(magazine -> content.append(magazine.toString()).append("\n"));
+        report.setContent(content.toString());
         try {
             report.makeReport();
         } catch (IOException e) {

@@ -41,7 +41,8 @@ public class Chapter extends Movie {
 
     @Override
     public String toString() {
-        return "\nTitle: " + this.getTitle() +
+        return "\n::CHAPTER::" +
+                "\nTitle: " + this.getTitle() +
                 "\nGenre: " + this.getGenre() +
                 "\nYear: " + this.getYear() +
                 "\nCreator: " + this.getCreator() +

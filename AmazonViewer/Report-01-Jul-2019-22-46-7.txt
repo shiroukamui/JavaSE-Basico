@@ -92,20 +92,3 @@ Year: 2015
 Creator: Author 5
 Duration: 45
 Seconds viewed: 2
-
-::BOOK::
-Title: Book 2
-Publisher: Editorial 2
-Authors: Author 2, Author 21 
-Publication Date: 01/07/2019
-ISBN: ISBN 2
-Readed: Yes
-Pages: 6
-
-::MAGAZINE::
-Title: Magazine 3
-Publisher: Editorial 3
-Authors: Author 3 
-First Publication Date: 01/07/2019
-Last Publication Date: 01/07/2019
-Release Frequency: Release Frecuency 3

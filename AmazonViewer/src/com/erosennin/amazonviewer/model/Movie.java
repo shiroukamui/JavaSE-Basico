@@ -55,7 +55,8 @@ public class Movie extends Film implements Visualizable, MovieDAO {
      */
     @Override
     public String toString() {
-        return "\nTitle: " + this.getTitle() +
+        return "\n::MOVIE::" +
+                "\nTitle: " + this.getTitle() +
                 "\nGenre: " + this.getGenre() +
                 "\nYear: " + this.getYear() +
                 "\nCreator: " + this.getCreator() +
@@ -96,7 +97,7 @@ public class Movie extends Film implements Visualizable, MovieDAO {
         Movie movie = new Movie();
         movie.setMovieViewed(this);
         for (int i = 0; i < 100; i++) {
-            System.out.println("...You are seeing the " + getTitle() + "...");
+            System.out.println("...You are seeing " + getTitle() + "...");
         }
         Utils.timeDelay(2);
         stopToSee(new Date());

@@ -47,7 +47,8 @@ public class Serie extends Film implements Visualizable{
 
     @Override
     public String toString() {
-        return "\nTitle: " + this.getTitle() +
+        return "\n::SERIE::" +
+                "\nTitle: " + this.getTitle() +
                 "\nGenre: " + this.getGenre() +
                 "\nYear: " + this.getYear() +
                 "\nCreator: " + this.getCreator() +
