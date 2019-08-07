@@ -20,16 +20,29 @@ SET time_zone = "+00:00";
 -- Base de datos: `amazonviewer`
 --
 
+CREATE OR REPLACE DATABASE `amazonviewer`;
+
+-- --------------------------------------------------------
+
+--
+-- Usuario y password de base de datos: `amazonviewer`
+--
+
+CREATE OR REPLACE USER 'amazonviewer'@'%' IDENTIFIED BY 'platzi';
+GRANT ALL PRIVILEGES ON amazonviewer.* TO 'amazonviewer'@'%';
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `material`
 --
-
+USE `amazonviewer`;
 CREATE TABLE `material` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
 
 --
 -- Volcado de datos para la tabla `material`
@@ -62,11 +75,11 @@ CREATE TABLE `movie` (
 --
 
 INSERT INTO `movie` (`id`, `title`, `genre`, `creator`, `duration`, `year`) VALUES
-(6, 'Coco', 'Animación', 'Pixart', 120, 2017, false),
-(7, 'Titanic', 'Drama', 'James Cameron', 195, 1997, false),
-(8, 'Avatar', 'Ficción', 'James Cameron', 161, 2009, false),
-(9, 'Amélie', 'Romance', 'Jean-Pierre Jeunet', 123, 2001, false),
-(10, 'Sombra del Agua', 'Drama-Fantasía', 'Guillermo del Toro', 123, 2017, false);
+(6, 'Coco', 'Animación', 'Pixart', 120, 2017),
+(7, 'Titanic', 'Drama', 'James Cameron', 195, 1997),
+(8, 'Avatar', 'Ficción', 'James Cameron', 161, 2009),
+(9, 'Amélie', 'Romance', 'Jean-Pierre Jeunet', 123, 2001),
+(10, 'Sombra del Agua', 'Drama-Fantasía', 'Guillermo del Toro', 123, 2017);
 
 -- --------------------------------------------------------
 
